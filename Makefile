@@ -5,3 +5,11 @@ build:
 
 run:
 	go run main.go
+
+keys-clear:
+	rm -r cert
+
+keys:
+	mkdir cert
+	openssl ecparam -genkey -name secp384r1 -out cert/server.key
+	openssl req -new -x509 -sha256 -key cert/server.key -out cert/server.pem -days 3650

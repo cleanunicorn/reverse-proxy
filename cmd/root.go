@@ -40,6 +40,9 @@ to quickly create a Cobra application.`,
 	// has an action associated with it:
 	RunE: func(cmd *cobra.Command, args []string) error {
 		proxyHandler, err := proxy.New(viper.GetString("destination"), viper.GetInt("port"))
+		if viper.GetBool("tls") {
+			proxyHandler.EnableTls()
+		}
 		if err != nil {
 			return err
 		}
@@ -78,17 +81,17 @@ func init() {
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.reverse-proxy.yaml)")
 
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
 	// Listen port
-	rootCmd.Flags().Int("port", 8080, "Port to listen on")
+	rootCmd.Flags().IntP("port", "p", 8080, "Port to listen on")
 	viper.BindPFlag("port", rootCmd.Flags().Lookup("port"))
 
 	// Destination
-	rootCmd.Flags().String("destination", "http://localhost:8080", "Destination to proxy to")
+	rootCmd.Flags().StringP("destination", "d", "http://localhost:8080", "Destination to proxy to")
 	viper.BindPFlag("destination", rootCmd.Flags().Lookup("destination"))
+
+	// Use TLS / HTTPS
+	rootCmd.Flags().BoolP("tls", "t", false, "Use TLS / HTTPS")
+	viper.BindPFlag("tls", rootCmd.Flags().Lookup("tls"))
 
 	// // Set up proxy defaults
 	// viper.SetDefault("destination", "http://localhost:8080")
