@@ -39,8 +39,12 @@ to quickly create a Cobra application.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	RunE: func(cmd *cobra.Command, args []string) error {
-		proxyHandler := proxy.New(viper.GetString("destination"), viper.GetInt("port"))
-		err := proxyHandler.Start()
+		proxyHandler, err := proxy.New(viper.GetString("destination"), viper.GetInt("port"))
+		if err != nil {
+			return err
+		}
+
+		err = proxyHandler.Start()
 		if err != nil {
 			return err
 		}
