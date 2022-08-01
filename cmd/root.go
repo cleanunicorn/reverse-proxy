@@ -20,33 +20,53 @@ import (
 	"os"
 	"reverse-proxy/proxy"
 
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 var cfgFile string
 
-// rootCmd represents the base command when called without any subcommands
+var log *logrus.Logger = logrus.New()
+
 var rootCmd = &cobra.Command{
 	Use:   "reverse-proxy",
 	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
+	Long:  `This is a reverse proxy that will forward requests to a destination.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		proxyHandler, err := proxy.New(viper.GetString("destination"), viper.GetInt("port"))
-		if viper.GetBool("tls") {
-			proxyHandler.EnableTls()
-		}
 		if err != nil {
 			return err
 		}
 
+		// Enable TLS / HTTPS
+		if viper.GetBool("tls") {
+			proxyHandler.EnableTls()
+		}
+
+		// Enable logging
+		if viper.GetString("log-level") != "" {
+			switch viper.GetString("log-level") {
+			case "trace":
+				log.SetLevel(logrus.TraceLevel)
+			case "debug":
+				log.SetLevel(logrus.DebugLevel)
+			case "info":
+				log.SetLevel(logrus.InfoLevel)
+			case "warn":
+				log.SetLevel(logrus.WarnLevel)
+			case "error":
+				log.SetLevel(logrus.ErrorLevel)
+			case "fatal":
+				log.SetLevel(logrus.FatalLevel)
+			case "panic":
+				log.SetLevel(logrus.PanicLevel)
+			default:
+				proxyHandler.SetLogger(log)
+			}
+		}
+
+		// Start the proxy
 		err = proxyHandler.Start()
 		if err != nil {
 			return err
@@ -54,13 +74,6 @@ to quickly create a Cobra application.`,
 
 		return nil
 	},
-	// TODO: parse args
-	// Args: func(cmd *cobra.Command, args []string) error {
-	// 	if len(args) < 1 {
-	// 		return fmt.Errorf("missing destination")
-	// 	}
-	// 	return nil
-	// },
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -75,10 +88,6 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.reverse-proxy.yaml)")
 
 	// Listen port
@@ -90,12 +99,19 @@ func init() {
 	viper.BindPFlag("destination", rootCmd.Flags().Lookup("destination"))
 
 	// Use TLS / HTTPS
-	rootCmd.Flags().BoolP("tls", "t", false, "Use TLS / HTTPS")
+	rootCmd.Flags().BoolP("tls", "t", false, "Use self signed TLS / HTTPS")
 	viper.BindPFlag("tls", rootCmd.Flags().Lookup("tls"))
 
-	// // Set up proxy defaults
-	// viper.SetDefault("destination", "http://localhost:8080")
-	// viper.SetDefault("listen-port", 8080)
+	// Set log level
+	rootCmd.Flags().StringP("log-level", "l", "info", "Log level (trace, debug, info, warn, error, fatal, panic)")
+	viper.BindPFlag("log-level", rootCmd.Flags().Lookup("log-level"))
+
+	// Set up proxy defaults
+	viper.SetDefault("destination", "http://localhost:8080")
+	viper.SetDefault("listen-port", 8080)
+
+	// Initialize the logger
+	log.SetFormatter(&logrus.TextFormatter{})
 }
 
 // initConfig reads in config file and ENV variables if set.
