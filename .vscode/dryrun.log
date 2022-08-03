@@ -1,6 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/daniel/Development/github.com/cleanunicorn/reverse-proxy'
- 
-go build -ldflags "-X main.buildVersion="v0.0.0+c2e96ce""
-make: Leaving directory '/home/daniel/Development/github.com/cleanunicorn/reverse-proxy'
+make: Entering directory `/Users/cleanunicorn/Development/github.com/cleanunicorn/reverse-proxy'
+go build -ldflags "-X main.buildVersion="v0.0.0+3484459""
+make: Leaving directory `/Users/cleanunicorn/Development/github.com/cleanunicorn/reverse-proxy'
  

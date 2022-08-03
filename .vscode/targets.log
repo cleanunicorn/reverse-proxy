@@ -1,14 +1,16 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
 
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
+# This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
 
-# Make data base, printed on Mon Aug  1 12:09:38 2022
+
+# Make data base, printed on Wed Aug  3 12:45:31 2022
 
 # Variables
 
@@ -16,152 +18,152 @@ make: *** No rule to make target 'all'.  Stop.
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# default
-.SHELLFLAGS := -c
 # environment
-XDG_SESSION_CLASS = user
+FIG_WORKFLOWS_KEYBIND = ^f
 # environment
-VSCODE_AGENT_FOLDER = /home/daniel/.vscode-server
-# environment
-XDG_SESSION_TYPE = tty
-# environment
-NVM_INC = /home/daniel/.nvm/versions/node/v14.18.1/include/node
+NVM_INC = /Users/cleanunicorn/.nvm/versions/node/v14.17.6/include/node
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+CPPFLAGS = -I/opt/homebrew/opt/llvm/include
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
-# default
-MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/daniel/Development/github.com/cleanunicorn/reverse-proxy
+CURDIR := /Users/cleanunicorn/Development/github.com/cleanunicorn/reverse-proxy
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /home/daniel/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
-# makefile (from 'Makefile', line 1)
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# 'override' directive
-GNUMAKEFLAGS := 
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# makefile (from `Makefile', line 1)
+VERSION := "v0.0.0+3484459"
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# makefile (from 'Makefile', line 1)
-VERSION := "v0.0.0+c2e96ce"
+__CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_CWD = /home/daniel
+INFOPATH = /opt/homebrew/share/info:
+# environment
+VSCODE_CWD = /
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-SSH_CONNECTION = 192.168.0.237 47488 192.168.0.201 22
-# environment
-PATH = /usr/local/go/bin:/home/daniel/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/home/daniel/.nvm/versions/node/v14.18.1/bin:/home/daniel/.nix-profile/bin:/home/daniel/.nix-profile/bin:/home/daniel/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/daniel/.local/bin:/home/daniel/bin:/home/daniel/golang:/home/daniel/.foundry/bin
+PATH = /opt/homebrew/opt/llvm/bin:/Users/cleanunicorn/.cabal/bin:/Users/cleanunicorn/.ghcup/bin:/Users/cleanunicorn/.nvm/versions/node/v14.17.6/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Little Snitch.app/Contents/Components:/Users/cleanunicorn/.fig/bin:/Users/cleanunicorn/.local/bin:/Users/cleanunicorn/.foundry/bin:/Users/cleanunicorn/go/bin:/Users/cleanunicorn/.yarn/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-XDG_RUNTIME_DIR = /run/user/1000
+GOPATH = /Users/cleanunicorn/go
 # environment
-GOPATH = /home/daniel/golang
-# environment
-NVM_BIN = /home/daniel/.nvm/versions/node/v14.18.1/bin
+NVM_BIN = /Users/cleanunicorn/.nvm/versions/node/v14.17.6/bin
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-7e0a07f2-07fb-4988-891d-e6551b6e1fca.sock
+LDFLAGS = -L/opt/homebrew/opt/llvm/lib
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-LS_COLORS = 
-# environment
-SSH_AUTH_SOCK = /run/user/1000/vscode-ssh-auth-sock-107256770
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.qmFd7aavpW/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-GOBIN = /home/daniel/golang/bin
+TTY = not a tty
 # environment
-NIX_SSL_CERT_FILE = /etc/ssl/certs/ca-certificates.crt
+FIG_PID = 84430
 # environment
-PWD = /home/daniel/Development/github.com/cleanunicorn/reverse-proxy
+PWD = /Users/cleanunicorn/Development/github.com/cleanunicorn/reverse-proxy
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+MANPATH = /Users/cleanunicorn/.nvm/versions/node/v14.17.6/share/man:/opt/homebrew/share/man::
+# environment
+GOMODCACHE = /Users/cleanunicorn/go/pkg/mod
+# environment
+HOME = /Users/cleanunicorn
 # default
-.LOADED := 
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-GOMODCACHE = /home/daniel/golang/pkg/mod
+VSCODE_CODE_CACHE_PATH = /Users/cleanunicorn/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
-HOME = /home/daniel
-# environment
-LOGNAME = daniel
+LOGNAME = cleanunicorn
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 NVM_CD_FLAGS = -q
-# automatic
-+F = $(notdir $+)
 # environment
-ZSH = /home/daniel/.oh-my-zsh
+ZSH = /Users/cleanunicorn/.oh-my-zsh
+# environment
+ETH_RPC_URL = https://eth-mainnet.alchemyapi.io/v2/9_HDcgy15Mwo-erR5lcIVurXMXotz3Oz
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-MAKELEVEL := 0
+XPC_FLAGS = 0x0
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 0
+SHLVL = 1
+# default
+MAKE_VERSION := 3.81
 # environment
-NIX_PATH = /home/daniel/.nix-defexpr/channels:/home/daniel/.nix-defexpr/channels
-# environment
-NIX_PROFILES = /nix/var/nix/profiles/default /home/daniel/.nix-profile
-# environment
-XDG_SESSION_ID = 1
-# environment
-USER = daniel
+USER = cleanunicorn
 # makefile
 .DEFAULT_GOAL := build
-# environment
-GOROOT = /usr/local/go
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := make
-# environment
-OLDPWD = /home/daniel
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
+# environment
+TMPDIR = /var/folders/p8/3tl65y6s4mncbymkvwjdjk0c0000gn/T/
 # automatic
 *F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/cleanunicorn/Library/Application Support/Code/1.69.2-main.sock
+# environment
+MallocNanoZone = 0
 # makefile
-MAKEFLAGS = pqrR
+MAKEFLAGS = Rrqp
 # environment
-MFLAGS = -pqrR
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
 # environment
-SSH_CLIENT = 192.168.0.237 47488 22
+NVM_DIR = /Users/cleanunicorn/.nvm
 # environment
-NVM_DIR = /home/daniel/.nvm
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.12083861.12083867
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
 # environment
-BROWSER = /home/daniel/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/helpers/browser.sh
+HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
-VSCODE_HANDLES_SIGPIPE = true
-# 'override' directive
-.SHELLSTATUS := 0
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
 PAGER = less
+# environment
+ETH_KEYSTORE = /Users/cleanunicorn/.config/foundry/keystore.json
 # environment
 LC_ALL = C
 # environment
@@ -171,17 +173,17 @@ VIRTUAL_ENV_DISABLE_PROMPT = 1
 # default
 SUFFIXES := 
 # default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# default
-.RECIPEPREFIX := 
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+GPG_TTY = not a tty
 # environment
 LANG = C
 # environment
-MOTD_SHOWN = pam
+VSCODE_PID = 84419
 # variable set hash-table stats:
-# Load=84/1024=8%, Rehash=0, Collisions=10/116=9%
+# Load=84/1024=8%, Rehash=0, Collisions=2/112=2%
 
 # Pattern-specific Variable Values
 
@@ -189,9 +191,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 922759): 14 files, no impossibilities.
+# . (device 16777232, inode 12449709): 13 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -201,31 +203,43 @@ MOTD_SHOWN = pam
 
 # Not a target:
 all:
-#  Command line target.
+#  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 keys-clear:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 10):
+#  commands to execute (from `Makefile', line 10):
 	rm -r cert
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-31 20:19:50.181858123
+#  Last modified 2022-08-02 15:11:56
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 build:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 4):
+#  commands to execute (from `Makefile', line 4):
 	go build -ldflags "-X main.buildVersion=$(VERSION)"
+	
 
 # Not a target:
 .DEFAULT:
@@ -237,32 +251,33 @@ run:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 7):
+#  commands to execute (from `Makefile', line 7):
 	go run main.go
+	
 
 keys:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 13):
+#  commands to execute (from `Makefile', line 13):
 	mkdir cert
 	openssl ecparam -genkey -name secp384r1 -out cert/server.key
 	openssl req -new -x509 -sha256 -key cert/server.key -out cert/server.pem -days 3650
+	
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/18=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/20=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 174 B / avg = 7 B
-# current buf: size = 8162 B / used = 174 B / count = 23 / avg = 7 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# strcache performance: lookups = 31 / hit rate = 25%
-# hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Mon Aug  1 12:09:38 2022
+# Finished Make data base on Wed Aug  3 12:45:31 2022
 
  

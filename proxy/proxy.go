@@ -31,7 +31,7 @@ import (
 
 type ProxyHandler struct {
 	// Logger
-	logger *logrus.Logger
+	logger logrus.Logger
 
 	// Forward requests to this URL
 	destination    string
@@ -69,11 +69,11 @@ func (ph *ProxyHandler) DisableTls() {
 }
 
 func (ph *ProxyHandler) SetLogger(logger *logrus.Logger) {
-	ph.logger = logger
+	ph.logger = *logger
 }
 
 func (ph *ProxyHandler) handle(w http.ResponseWriter, r *http.Request) {
-	ph.logger.Info(`Handling request`, r.URL.String())
+	ph.logger.Info(`Handling request `, r.URL.String())
 
 	// Replace received request properties with destination properties
 	r.Host = ph.destinationUrl.Host
@@ -122,7 +122,6 @@ func (ph *ProxyHandler) handle(w http.ResponseWriter, r *http.Request) {
 
 	// Send body
 	io.Copy(w, destinationResponse.Body)
-
 }
 
 func (ph *ProxyHandler) Start() error {

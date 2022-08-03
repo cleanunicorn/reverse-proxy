@@ -61,10 +61,9 @@ var rootCmd = &cobra.Command{
 				log.SetLevel(logrus.FatalLevel)
 			case "panic":
 				log.SetLevel(logrus.PanicLevel)
-			default:
-				proxyHandler.SetLogger(log)
 			}
 		}
+		proxyHandler.SetLogger(log)
 
 		// Start the proxy
 		err = proxyHandler.Start()
