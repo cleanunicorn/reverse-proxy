@@ -21,6 +21,7 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"strings"
 	"time"
@@ -28,6 +29,10 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/net/http2"
 )
+
+type CachedResponse struct {
+	dump []byte
+}
 
 type ProxyHandler struct {
 	// Logger
@@ -42,6 +47,9 @@ type ProxyHandler struct {
 
 	// Use TLS / HTTPS
 	useTls bool
+
+	// Cache map
+	cache map[string]CachedResponse
 }
 
 func New(destination string, listenPort int) (*ProxyHandler, error) {
@@ -72,13 +80,33 @@ func (ph *ProxyHandler) SetLogger(logger *logrus.Logger) {
 	ph.logger = *logger
 }
 
+func (ph *ProxyHandler) makeRequestKey(r *http.Request) string {
+	return fmt.Sprintf("%s %s %s", r.Method, r.URL.String(), r.RemoteAddr)
+}
+
 func (ph *ProxyHandler) handle(w http.ResponseWriter, r *http.Request) {
 	ph.logger.Info(`Handling request `, r.URL.String())
+
+	// Check if the request is already cached
+	requestKey := ph.makeRequestKey(r)
+	ph.logger.Debug(`Cache key: `, requestKey)
+	if cachedResponse, ok := ph.cache[requestKey]; ok {
+		ph.logger.Debug(`Cache hit`)
+
+		// // Send headers
+		// for headerName, headerValue := range cachedResponse.headers {
+		// 	w.Header().Set(headerName, headerValue)
+		// }
+
+		// Write the cached response
+		w.Write(cachedResponse.dump)
+
+		return
+	}
 
 	// Replace received request properties with destination properties
 	r.Host = ph.destinationUrl.Host
 	r.URL.Host = ph.destinationUrl.Host
-	// TODO: check this for correctness
 	r.URL.Scheme = ph.destinationUrl.Scheme
 	r.RequestURI = ""
 
@@ -122,12 +150,23 @@ func (ph *ProxyHandler) handle(w http.ResponseWriter, r *http.Request) {
 
 	// Send body
 	io.Copy(w, destinationResponse.Body)
+
+	// Cache response
+	cachedResponse, err := httputil.DumpResponse(destinationResponse, false)
+	if err != nil {
+		ph.logger.Error(`Could not dump response: `, err)
+	} else {
+		ph.cache[requestKey] = CachedResponse{dump: cachedResponse}
+	}
 }
 
 func (ph *ProxyHandler) Start() error {
 	var err error = nil
 
 	http.Handle("/", http.HandlerFunc(ph.handle))
+
+	// Initialize cache
+	ph.cache = make(map[string]CachedResponse)
 
 	// Start server
 	if ph.useTls {
